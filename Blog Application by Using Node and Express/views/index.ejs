@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog App</title>
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+  <h1 class="pageTitle">Welcome to Rajasthani Blogs!</h1>
+  <form class="formStyling" action="/" method="post">
+    <input class="title common" type="text" name="title" placeholder="Blog Title" required>
+    <textarea class="content common" name="content" placeholder="Blog Content" required></textarea>
+    <button class="addButton" type="submit">Create</button>
+  </form>
+
+  <div class="blogContainer">
+    <% blogs.forEach(blog => { %>
+      <div class="blogs common">
+        <a class="blogLink" href="/blog/<%= blog.id %>"><%= blog.title %></a> 
+        <div class="actionBtn">
+          <a class="editLink" href="/edit/<%= blog.id %>"><img src="/images/pen.svg"/></a>
+          <form action="/delete/<%= blog.id %>" method="post">
+            <button class="blogDelete" type="submit"><img src="/images/trash3.svg"/></button>
+          </form>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+
+</body>
+</html>
