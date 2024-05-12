@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Forecasting</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <!-- Font Awesome -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- MDB -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.min.css"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <h1 class="pageTitle">Weather Forecasting</h1>
+  <form class="formStyling" action="/" method="post">
+    <input class="city common" type="text" name="cityName" placeholder="Enter city name" required>
+    <button class="checkBtn" type="submit">Check</button>
+  </form>
+
+  <% if(content.flag) { %>
+    <div class="row d-flex justify-content-center py-5">
+      <div class="col-md-8 col-lg-6 col-xl-5">
+    
+        <div class="card text-body" style=" border-radius: 35px;">
+          <div class="card-body p-4">
+    
+            <div class="d-flex">
+              <h6 class="flex-grow-1"><%= content.name %></h6>
+              <h6><%= content.time %></h6>
+            </div>
+    
+            <div class="d-flex flex-column text-center mt-5 mb-4">
+              <h6 class="display-4 mb-0 font-weight-bold"> <%= (content.main.temp - 273.15).toFixed(2) %>°C </h6>
+              <span class="small" style="color: #868B94"><%= content.weather[0].main %></span>
+            </div>
+    
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1" style="font-size: 1rem;">
+                <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> <%= Math.floor((content.wind.speed*18)/5) %> km/h </span>
+                </div>
+                <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> <%= content.main.humidity %>% </span></div>
+                <div><i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1"> <%= content.main.pressure %> hPa </span></div>
+              </div>
+              <div>
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu1.webp"
+                  width="100px">
+              </div>
+            </div>
+    
+          </div>
+        </div>
+    
+      </div>
+    </div>
+  <% } %>
+
+
+</body>
+</html>
